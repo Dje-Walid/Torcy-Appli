@@ -87,13 +87,16 @@ namespace DevisTorcy
         }
         public void sendMail(string mailClient, string nomFichier)
         {
+            //Chemin d'accès
+            DirectoryInfo dirBeforeAppli = Directory.GetParent(Convert.ToString(Directory.GetParent(Convert.ToString(Directory.GetParent(Convert.ToString(Directory.GetParent(Directory.GetCurrentDirectory())))))));
+
             //Create Message
             MailMessage mail = new MailMessage();
             mail.Subject = "Devis Île de Loisirs de Vaires-Torcy";
             mail.Body = "Bonjour, \r\n\r\nVeuillez trouver ci joint votre devis pour la baignade. \r\n\r\nBonne journee, Cordialement. \nDJEMMAA Walid\r\n\r\n\r\n--\r\nAccueil Plage\r\naccueilplage@vaires-torcy.iledeloisirs.fr\r\nPole baignade\r\nRoute de Lagny\r\n77200 Torcy\r\nTel: 0160200204 (touche 2)\r\nFax: 0164809149";
             mail.From = new MailAddress("accueilplage@vaires-torcy.iledeloisirs.fr");
             mail.IsBodyHtml = false;
-            string joint = @"\\192.168.117.4\Commun\Fichier d'échange\SECRETARIAT 2020\devis groupe 2020\586020-" + nomFichier + ".xlsx";
+            string joint = dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString() + @"\5860" + (DateTime.Today.Year - 2000) + "-" + nomFichier + ".xlsx";
             mail.Attachments.Add(new Attachment(joint));
             mail.To.Add(new MailAddress(mailClient));
             MimeKit.MimeMessage mimeMessage = MimeKit.MimeMessage.CreateFromMailMessage(mail);

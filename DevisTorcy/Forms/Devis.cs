@@ -1,7 +1,10 @@
 ﻿using DevisTorcy.Forms;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Linq.Expressions;
 
 namespace DevisTorcy
 {
@@ -119,8 +122,11 @@ namespace DevisTorcy
         private void btSend_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook sheet = excel.Workbooks.Open(@"\\192.168.117.4\Commun\Fichier d'échange\SECRETARIAT 2020\DevisTorcy\DevisTorcy\bin\Debug\ExempleDevis.xlsx");
+            Microsoft.Office.Interop.Excel.Workbook sheet = excel.Workbooks.Open(Directory.GetCurrentDirectory() + @"\ExempleDevis.xlsx");
             Microsoft.Office.Interop.Excel.Worksheet x = excel.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
+
+            DirectoryInfo dirBeforeAppli = Directory.GetParent(Convert.ToString(Directory.GetParent(Convert.ToString(Directory.GetParent(Convert.ToString(Directory.GetParent(Directory.GetCurrentDirectory())))))));
+            Directory.CreateDirectory(dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString());
 
             //Compter le nombre de lignes
             Microsoft.Office.Interop.Excel.Range userRange = x.UsedRange;
@@ -382,7 +388,7 @@ namespace DevisTorcy
                 }
             }
 
-            string nomFichier = @"\\192.168.117.4\Commun\Fichier d'échange\SECRETARIAT 2020\devis groupe 2020\ChoisirLaVille";
+            string nomFichier = Directory.GetCurrentDirectory() + @"\Devis\ChoisirLaVille";
 
             Program.outils.getConnection().Open();
             requete5 = "Select [Ville] from DevisAdresse where [Ville] = \"" + cbxVille.Text + "\";";
@@ -391,7 +397,7 @@ namespace DevisTorcy
 
             while (dr5.Read())
             {
-                nomFichier = @"\\192.168.117.4\Commun\Fichier d'échange\SECRETARIAT 2020\devis groupe 2020\586020-" + Convert.ToString(Program.outils.getNumDevis() - 1) + "_DEVIS_" + dr5[0].ToString();
+                nomFichier = dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString() + @"\5860" + (DateTime.Today.Year - 2000) + "-" + Convert.ToString(Program.outils.getNumDevis() - 1) + "_DEVIS_" + dr5[0].ToString();
             }
             Program.outils.getConnection().Close();
 
