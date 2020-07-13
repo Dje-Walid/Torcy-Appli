@@ -74,6 +74,18 @@ namespace DevisTorcy
             data["Info"]["NumDevis"] = num;
             this.config.WriteFile("Config.ini", data);
         }
+
+        public int getNumFacture()
+        {
+            return Convert.ToInt32(this.getConfig()["Info"]["NumFacture"]);
+        }
+
+        public void setNumFacture(string num)
+        {
+            IniData data = this.getConfig();
+            data["Info"]["NumFacture"] = num;
+            this.config.WriteFile("Config.ini", data);
+        }
         #endregion
 
         #region GMAIL

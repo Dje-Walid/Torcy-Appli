@@ -106,6 +106,12 @@
     <Compile Include="Forms\AjoutAdresseDevis.Designer.cs">
       <DependentUpon>AjoutAdresseDevis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AjoutAdresseFacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AjoutAdresseFacture.Designer.cs">
+      <DependentUpon>AjoutAdresseFacture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Devis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AjoutAdresseDevis.resx">
       <DependentUpon>AjoutAdresseDevis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AjoutAdresseFacture.resx">
+      <DependentUpon>AjoutAdresseFacture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Devis.resx">
       <DependentUpon>Devis.cs</DependentUpon>

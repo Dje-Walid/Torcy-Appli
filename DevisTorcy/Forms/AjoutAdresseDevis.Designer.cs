@@ -185,6 +185,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AjoutAdresseDevis";
             this.Text = "Ajout d\'une nouvelle adresse";
+            this.Load += new System.EventHandler(this.AjoutAdresseDevis_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

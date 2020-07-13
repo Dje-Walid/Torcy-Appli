@@ -1,10 +1,8 @@
 ﻿using DevisTorcy.Forms;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using System.Linq.Expressions;
 
 namespace DevisTorcy
 {
@@ -186,6 +184,8 @@ namespace DevisTorcy
                 }
                 else if (dr3[0].ToString() != "")
                 {
+                    x.Range["D7"].Font.Bold = true;
+                    x.Range["D8"].Font.Bold = false;
                     x.Range["D7"].Value = dr[0].ToString();
                     x.Range["D8"].Value = dr1[0].ToString();
                     x.Range["D9"].Value = dr2[0].ToString();
@@ -388,7 +388,7 @@ namespace DevisTorcy
                 }
             }
 
-            string nomFichier = Directory.GetCurrentDirectory() + @"\Devis\ChoisirLaVille";
+            string nomFichier = dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString() + @"\" + "VEUILLEZ INDIQUER LA VILLE" ;
 
             Program.outils.getConnection().Open();
             requete5 = "Select [Ville] from DevisAdresse where [Ville] = \"" + cbxVille.Text + "\";";
@@ -397,7 +397,7 @@ namespace DevisTorcy
 
             while (dr5.Read())
             {
-                nomFichier = dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString() + @"\5860" + (DateTime.Today.Year - 2000) + "-" + Convert.ToString(Program.outils.getNumDevis() - 1) + "_DEVIS_" + dr5[0].ToString();
+                nomFichier = dirBeforeAppli + @"\Devis" + DateTime.Today.Year.ToString() + @"\5860" + (DateTime.Today.Year - 2000) + "-" + Convert.ToString(Program.outils.getNumDevis() - 1) + " DEVIS " + dr5[0].ToString();
             }
             Program.outils.getConnection().Close();
 
@@ -416,7 +416,7 @@ namespace DevisTorcy
             //Envoi Mail
             if (txbxMail.Text != "")
             {
-                Program.outils.sendMail(txbxMail.Text, Convert.ToString(Program.outils.getNumDevis() - 1) + "_DEVIS_" + cbxVille.Text);
+                Program.outils.sendMail(txbxMail.Text, Convert.ToString(Program.outils.getNumDevis() - 1) + " DEVIS " + cbxVille.Text);
             }
 
             this.Hide();

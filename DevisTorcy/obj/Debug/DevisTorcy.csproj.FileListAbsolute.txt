@@ -37,3 +37,4 @@ C:\Users\djewa\source\repos\DevisTorcy\DevisTorcy\bin\Debug\Google.Apis.Gmail.v1
 C:\Users\djewa\source\repos\DevisTorcy\DevisTorcy\bin\Debug\MimeKit.pdb
 C:\Users\djewa\source\repos\DevisTorcy\DevisTorcy\bin\Debug\MimeKit.xml
 C:\Users\djewa\source\repos\DevisTorcy\DevisTorcy\bin\Debug\Newtonsoft.Json.xml
+C:\Users\djewa\source\repos\DevisTorcy\DevisTorcy\obj\Debug\DevisTorcy.Forms.AjoutAdresseFacture.resources
